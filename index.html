@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- Unreleased: keep crawlers out until the paper is public. Remove this line at release. -->
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="PointX predicts albedo, irradiance, roughness, metallicity and normals once per 3D surface point, from one or many unposed images. Consistent across views by construction.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PointX: Multi-View Consistent Intrinsics by Querying Surface Points">
+<meta property="og:description" content="A feed-forward model that predicts intrinsics per 3D surface point instead of per pixel.">
+<meta property="og:image" content="assets/preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<title>PointX: Multi-View Consistent Intrinsics by Querying Surface Points</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preload" href="fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css?v=14">
+<!-- ?v=N on the stylesheet and every script: a browser that kept an old copy cannot match it. After changing css/ or js/, raise N everywhere in this file
+     (sed -i -E 's/\?v=[0-9]+/?v=N/g' index.html). The import map gives the same N to the modules that other modules import. -->
+<script type="importmap">{"imports":{"three":"./vendor/three.module.min.js","./js/compare.js":"./js/compare.js?v=14","./js/viewer.js":"./js/viewer.js?v=14","./js/benchmarks-data.js":"./js/benchmarks-data.js?v=14"}}</script>
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="top" aria-label="Main navigation"><div class="wrap">
+  <a class="brand" href="#top" aria-label="PointX, top of page">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><g stroke-width="1.6" stroke-linecap="round"><path d="M4 4.5 12 13" stroke="#ef8a2c"/><path d="M20 4.5 12 13" stroke="#35a56a"/><path d="M12 22v-9" stroke="#8b5bd6"/></g><circle cx="4" cy="4.5" r="2.2" fill="#ef8a2c"/><circle cx="20" cy="4.5" r="2.2" fill="#35a56a"/><circle cx="12" cy="21.5" r="2.2" fill="#8b5bd6"/><circle cx="12" cy="13" r="3.6" fill="#2a6fdb" stroke="#fff" stroke-width="1.4"/></svg>
+    PointX
+  </a>
+  <div class="navlinks">
+    <a href="#abstract">Abstract</a><a href="#results">Results</a><a href="#method">Method</a><a href="#benchmarks">Benchmarks</a><a href="#applications">Applications</a><a href="#bibtex">BibTeX</a>
+  </div>
+  <!-- At release: href to the PDF, remove aria-disabled and the "soon" class of the pills below. -->
+  <a class="navpaper" href="#bibtex">Cite</a>
+</div></nav>
+
+<header class="mast"><div class="wrap">
+  <h1>Point<span class="x">X</span></h1>
+  <p class="subtitle">Multi-View Consistent Intrinsics by Querying Surface Points</p>
+  <p class="authors">
+    <span class="au"><a href="https://mlfarinha.github.io/" target="_blank" rel="noopener">Miguel Farinha</a><sup>1,2*</sup></span>
+    <span class="au"><a href="https://samsartor.com/" target="_blank" rel="noopener">Sam Sartor</a><sup>1</sup></span>
+    <span class="au"><a href="https://iliyan.com/" target="_blank" rel="noopener">Iliyan Georgiev</a><sup>1</sup></span>
+    <span class="au"><a href="https://gvecchio.com/" target="_blank" rel="noopener">Giuseppe Vecchio</a><sup>1</sup></span>
+    <span class="au"><a href="https://ronnie-clark.co.uk/" target="_blank" rel="noopener">Ronald Clark</a><sup>2</sup></span>
+    <span class="au"><a href="https://mfischer-ucl.github.io/" target="_blank" rel="noopener">Michael Fischer</a><sup>1</sup></span>
+  </p>
+  <p class="affil"><span><sup>1</sup>Adobe Research</span><span><sup>2</sup>University of Oxford</span></p>
+  <p class="note"><sup>*</sup>Work done during an internship at Adobe Research</p>
+  <div class="links">
+    <a class="pill soon" aria-disabled="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>Paper</a>
+    <a class="pill soon" aria-disabled="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2.5zM4 19.5A2 2 0 0 0 6 22h14v-3"/></svg>arXiv</a>
+    <a class="pill soon" aria-disabled="true"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>Code</a>
+  </div>
+  <p class="tldr"><span class="k">TL;DR</span>PointX predicts albedo, irradiance, roughness, metallicity and normals <b>once per 3D surface point</b>. The prediction belongs to the point, not to a pixel, so it is <b>consistent across views by construction</b>.</p>
+</div></header>
+
+<main id="main">
+
+<section class="hero" id="demo" aria-label="Interactive 3D results"><div class="wrap wide">
+  <div class="stage" id="hero-stage" data-ready="false">
+    <div class="poster" id="hero-poster"></div>
+    <div class="stage-ui">
+      <div class="stage-top">
+        <div class="seg glass" id="hero-channels" role="group" aria-label="Property shown on the point cloud"></div>
+        <div class="inset" id="hero-inset"><canvas id="hero-frame" width="384" height="216" role="img" aria-label="Current frame of the input video"></canvas><span class="tag">Input video</span></div>
+      </div>
+      <div class="stage-mid">
+        <div class="probe glass" id="hero-probe" hidden>
+          <div class="probe-head"><span class="pdot"></span><b>Surface point <i>p</i></b><span id="hero-probe-count"></span><button type="button" id="hero-probe-close" aria-label="Close">×</button></div>
+          <div class="probe-views" id="hero-probe-views"></div>
+          <div class="probe-values" id="hero-probe-values"></div>
+        </div>
+        <span class="hint" id="hero-hint">Drag to orbit · scroll to zoom · click a point to see its track</span>
+        <button class="touch-gate glass" type="button">Tap to explore</button>
+      </div>
+      <div class="stage-bottom">
+        <div class="transport glass">
+          <button class="iconbtn" id="hero-play" type="button" aria-label="Pause"></button>
+          <input class="scrub" id="hero-scrub" type="range" min="0" max="100" step="0.01" value="0" aria-label="Frame of the input video">
+          <output class="count" id="hero-count">–</output>
+        </div>
+        <div class="toggles glass" role="group" aria-label="View options">
+          <button type="button" id="hero-follow" aria-pressed="false" title="Look through the video's camera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 7 16 12l7 5z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg><span>Camera view</span></button>
+          <button type="button" id="hero-reveal" aria-pressed="true" title="Show each point from the first frame in which it appears"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Build over time</span></button>
+          <button type="button" id="hero-cull" aria-pressed="true" title="Hide surfaces that face away, so rooms open up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9 12 4l9 5v10H3z"/><path d="M3 9l9 5 9-5M12 14v5"/></svg><span>Cut-away</span></button>
+          <button type="button" id="hero-reset" title="Back to the opening view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg><span>Reset</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="stage-load" id="hero-load"><div class="box"><span id="hero-load-text">Loading the scene…</span><div class="bar"><i id="hero-load-bar"></i></div></div></div>
+  </div>
+  <div class="scene-row" id="hero-scenes" role="group" aria-label="Scenes"></div>
+  <p class="scene-meta" id="hero-meta" aria-live="polite"></p>
+  <p class="caption"><b>One PointX query per 3D point.</b></p>
+</div></section>
+
+<section id="abstract" class="tight"><div class="wrap">
+  <p class="eyebrow"><span class="dots"><i></i><i></i><i></i><i></i><i></i></span>Abstract</p>
+  <p class="prose measure">The appearance of a scene is determined by the albedo, roughness, metallicity and normal of every point on its surface, and by the light that reaches it, its irradiance. Recovering these intrinsics from images is ambiguous, and methods that predict them per pixel give the same surface point a different decomposition in every view. We introduce <b>PointX</b>, a simple feed-forward model that predicts intrinsics per 3D surface point instead. A multi-view transformer encodes a set of unposed images, and for any queried surface point, PointX pools the point's tokens across the views in which it appears and decodes the point's intrinsics once. Each point of a 3D reconstruction of the scene, such as a point cloud or a mesh, thus receives a single prediction, which is exactly consistent across views by construction and enables view-consistent relighting and editing. The same model also predicts per-view maps, from one image or many, by querying the point seen at every pixel. These maps agree across views up to the precision of the estimated geometry and correspondences. PointX is significantly more consistent than existing methods, while remaining competitive in accuracy from a single image and improving as views are added.</p>
+</div></section>
+
+<section id="results" class="band"><div class="wrap wide">
+  <p class="eyebrow"><span class="dots"><i></i><i></i><i></i><i></i><i></i></span>Results</p>
+  <h2>Steady over time</h2>
+  <p class="lede">Real videos from DL3DV, every method in its video mode, nothing filtered in time. Every map of every method plays side by side; switch to the slider to compare PointX with one baseline under a divider.</p>
+  <div class="cmp" id="video-compare"></div>
+</div></section>
+
+<section id="surface"><div class="wrap wide">
+  <h2>One answer per surface point</h2>
+  <p class="lede">With the geometry of a scene given, its surface points can be queried directly. Per-view methods must average maps that disagree, which leaves seams on the surface. PointX decodes each point once. Drag the divider; orbit the scene.</p>
+  <div class="stage small" id="surface-stage" data-ready="false">
+    <div class="poster" id="surface-poster"></div>
+    <div class="stage-ui">
+      <div class="stage-top"><span class="tag static">PointX (Ours)</span><span class="tag static" id="surface-tag-other"></span></div>
+      <div class="stage-mid"><span class="hint">Drag the handle to move the divider · drag elsewhere to orbit · scroll to zoom</span><button class="touch-gate glass" type="button">Tap to explore</button></div>
+      <div class="stage-bottom" style="justify-content:flex-end">
+        <div class="toggles glass" role="group" aria-label="View options">
+          <button type="button" id="surface-views" aria-pressed="true" title="The input views"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 7 16 12l7 5z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg><span>Input views</span></button>
+          <button type="button" id="surface-cull" aria-pressed="true" title="Hide surfaces that face away, so rooms open up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9 12 4l9 5v10H3z"/><path d="M3 9l9 5 9-5M12 14v5"/></svg><span>Cut-away</span></button>
+          <button type="button" id="surface-reset" title="Back to the opening view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg><span>Reset</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="divider" id="surface-divider"><button type="button" class="knob" id="surface-knob" tabindex="-1" aria-hidden="true"></button></div>
+    <input class="sr" id="surface-range" type="range" min="2" max="98" step="1" value="50" aria-label="Position of the divider between PointX and the other method">
+    <div class="stage-load" id="surface-load"><div class="box"><span id="surface-load-text">Loading the scene…</span><div class="bar"><i id="surface-load-bar"></i></div></div></div>
+  </div>
+  <div class="cmp-controls"><div class="cmp-bar" id="surface-bar"></div></div>
+  <div class="scene-row" id="surface-scenes" role="group" aria-label="Scenes"></div>
+  <p class="scene-meta" id="surface-meta" aria-live="polite"></p>
+  <p class="caption">Surface points of rendered scenes that appear in at least two input views. Per-view methods take the mean of their maps over those views. Dark grey: no ground truth.</p>
+</div></section>
+
+<section id="consistency" class="band"><div class="wrap wide">
+  <h2>The same point, the same answer</h2>
+  <p class="lede">Two photographs of a real scene, with only the images given. Drag the divider to wipe both views from photograph to map, and move over either view: the laser scan marks the same surface point in the other, with the value each method gives it in the two.</p>
+  <div class="cons" id="consistency-compare"></div>
+  <p class="caption">ETH3D photographs with laser-scanned geometry, used here only to find corresponding points. PointX with RoMa-Ω tracks; the video and multi-view baselines process the views jointly. Normals of view 2 are shown in the camera frame of view 1, and its irradiance at the exposure of view 1.</p>
+</div></section>
+
+<section id="method"><div class="wrap">
+  <p class="eyebrow"><span class="dots"><i></i><i></i><i></i><i></i><i></i></span>Method</p>
+  <h2>Predict the point, not the pixel</h2>
+  <p class="lede">Intrinsics are properties of surface points, so the surface point is the unit of prediction. A query names a 3D point; every view in which it appears contributes one token; the point is decoded once.</p>
+  <figure class="method-fig">
+    <a href="assets/method/method.webp" target="_blank" rel="noopener"><img src="assets/method/method.webp" width="2970" height="1236" loading="lazy" alt="PointX overview. Three input views and the geometry estimated by a frozen VGGT-Omega enter a multi-view transformer with frame and global attention; a DPT decoder gives one token map per view. For a queried surface point p, the tokens at its locations in the three views are combined by a confidence-weighted mean into a single token z, from which five small MLPs decode albedo, irradiance, roughness, metallicity and normal."></a>
+    <figcaption>A multi-view transformer, conditioned on the geometry estimated by a frozen VGGT-Ω, turns each view <i>v</i> into a token map <i>t<sub>v</sub></i>. For a queried surface point <i>p</i>, the tokens at its locations <i>x<sub>v</sub></i> in the views are pooled into a single token <i>z</i> by a confidence-weighted mean, and one MLP per property decodes the point's intrinsics from <i>z</i>.</figcaption>
+  </figure>
+  <div class="steps">
+    <article class="step" style="--c:var(--v1)">
+      <span class="n">01</span><h3>Locate the point in the views</h3>
+      <p>The <b>track</b> of a point <i>p</i> is where it projects in each view. Projection also lands where <i>p</i> is hidden, so each location carries a confidence that <i>p</i> is visible there, from the distance between <i>p</i> and the surface that view images at that pixel.</p>
+      <math display="block" aria-label="c v equals one over one plus delta v over tau, with delta v the distance between the point map of view v at x v and p, divided by the depth of p in view v"><mrow><msub><mi>c</mi><mi>v</mi></msub><mo>=</mo><mfrac><mn>1</mn><mrow><mn>1</mn><mo>+</mo><msub><mi>δ</mi><mi>v</mi></msub><mo lspace="0" rspace="0">/</mo><mi>τ</mi></mrow></mfrac><mo>,</mo><mspace width="1em"/><msub><mi>δ</mi><mi>v</mi></msub><mo>=</mo><mfrac><mrow><mo stretchy="false">‖</mo><msub><mi>X</mi><mi>v</mi></msub><mo stretchy="false" lspace="0" rspace="0">[</mo><msub><mi>x</mi><mi>v</mi></msub><mo stretchy="false" lspace="0" rspace="0">]</mo><mo>−</mo><mi>p</mi><mo stretchy="false">‖</mo></mrow><msub><mi>d</mi><mi>v</mi></msub></mfrac></mrow></math>
+      <p class="fine">Cameras and depth come from a frozen reconstruction model, a scan, or any other source. A dense matcher can supply the track instead.</p>
+    </article>
+    <article class="step" style="--c:var(--v2)">
+      <span class="n">02</span><h3>Pool one token per view</h3>
+      <p>Every view contributes the token at its location on the track, and the tokens are averaged with their confidences as weights. Occluded views count for little. The weights have <b>no learned parameters</b> and no view is the reference.</p>
+      <math display="block" aria-label="z equals the sum over views of w v times the token of view v at x v, with w v equal to c v divided by the sum of all confidences"><mrow><mi>z</mi><mo>=</mo><munder><mo>∑</mo><mi>v</mi></munder><msub><mi>w</mi><mi>v</mi></msub><mspace width=".2em"/><msub><mi>t</mi><mi>v</mi></msub><mo stretchy="false" lspace="0" rspace="0">[</mo><msub><mi>x</mi><mi>v</mi></msub><mo stretchy="false" lspace="0" rspace="0">]</mo><mo>,</mo><mspace width="1em"/><msub><mi>w</mi><mi>v</mi></msub><mo>=</mo><mfrac><msub><mi>c</mi><mi>v</mi></msub><mrow><munder><mo>∑</mo><mi>u</mi></munder><msub><mi>c</mi><mi>u</mi></msub></mrow></mfrac></mrow></math>
+      <p class="fine">The pooled token depends only on the point, the geometry and the images, not on the view that asks.</p>
+    </article>
+    <article class="step" style="--c:var(--p)">
+      <span class="n">03</span><h3>Decode the point once</h3>
+      <p>Five small MLPs read albedo, irradiance, roughness, metallicity and the normal from the pooled token. The answer belongs to the point: its disagreement across views is <b>zero by construction</b>, with no consistency loss and no fusion of per-view predictions.</p>
+      <p class="fine">Querying the points of a point cloud or the texels of a mesh puts intrinsics directly on that representation. Querying the point seen at every pixel gives per-view maps, from one image or many.</p>
+    </article>
+  </div>
+</div></section>
+
+<section id="benchmarks" class="band"><div class="wrap">
+  <p class="eyebrow"><span class="dots"><i></i><i></i><i></i><i></i><i></i></span>Benchmarks</p>
+  <h2>Accurate and consistent</h2>
+  <p class="lede">Per-view predictions trade accuracy against agreement between views. Decoding each surface point once removes the trade: PointX is the most consistent method and stays among the most accurate.</p>
+  <div class="bm-two">
+    <figure class="bm-fig">
+      <div id="bm-tradeoff"></div>
+      <figcaption>Each point is a method: the accuracy of its per-view maps against how much two views of a real scene disagree. Single-view methods are scored from one image, video and multi-view methods from several. † Trained on the Hypersim test scenes.</figcaption>
+    </figure>
+    <figure class="bm-fig">
+      <h3>More views, more accurate</h3>
+      <div id="bm-views" class="bm-views"></div>
+      <figcaption>Error of a view on InteriorVerse as more views of its scene are given. Most of the gain remains without pooling: it comes from the multi-view transformer.</figcaption>
+    </figure>
+  </div>
+  <div id="bm-tables" class="bm-tables"></div>
+</div></section>
+
+<section id="applications"><div class="wrap">
+  <p class="eyebrow"><span class="dots"><i></i><i></i><i></i><i></i><i></i></span>Applications</p>
+  <h2>Relight it, edit it, once</h2>
+  <p class="lede">One set of intrinsics per surface point attaches directly to a 3D representation, with no per-view maps to fuse. A light placed once or a material edited once changes every view consistently. Below, a bulb is hung in ETH3D scenes and the photographs are relit by it: pick a light and a view, and drag the divider between the photograph and its relit version.</p>
+
+  <div class="relit" id="relit-compare"></div>
+  <p class="caption"><b>Path traced in Blender, with every predicted map.</b> The surface point at each pixel is queried once, from all the views in which it appears. The bulb is placed once in 3D and its light is path traced in Cycles on a surface that carries PointX's albedo, roughness, metallicity and normals as a standard physically based material, so it casts shadows, leaves highlights and bounces between surfaces.</p>
+
+  <div class="app-grid">
+    <figure class="app-card">
+      <div class="app-head"><h3>The same edit in every photograph</h3>
+        <div class="bm-seg" id="kicker-mode" role="group" aria-label="Version of the photographs"><button type="button" data-v="input" aria-pressed="true">Input</button><button type="button" data-v="relit" aria-pressed="false">Relit</button><button type="button" data-v="edit" aria-pressed="false">Albedo edit</button></div></div>
+      <div class="trio" id="kicker-trio">
+        <img src="assets/apps/kicker/input_1.webp" width="800" height="533" loading="lazy" alt="First view of an office with a blue sofa">
+        <img src="assets/apps/kicker/input_2.webp" width="800" height="533" loading="lazy" alt="Second view of the office">
+        <img src="assets/apps/kicker/input_3.webp" width="800" height="533" loading="lazy" alt="Third view of the office">
+      </div>
+      <figcaption>Every point of the laser scan of an ETH3D scene is queried once. A new light or an albedo edit is applied to the points and carried into each photograph, so the three views change together.</figcaption>
+    </figure>
+    <figure class="app-card">
+      <div class="app-head"><h3>Textures for a mesh</h3></div>
+      <div class="quad">
+        <div><img src="assets/apps/mesh/input.webp" width="478" height="319" loading="lazy" alt="A photograph of a garage with a parked van"><span>Input</span></div>
+        <div><img src="assets/apps/mesh/albedo.webp" width="478" height="319" loading="lazy" alt="The mesh of the garage textured with the predicted albedo"><span>Albedo texture</span></div>
+        <div><img src="assets/apps/mesh/relit.webp" width="478" height="319" loading="lazy" alt="The textured mesh path-traced under a new light"><span>Relit</span></div>
+        <div><img src="assets/apps/mesh/insert.webp" width="478" height="319" loading="lazy" alt="A chrome ball inserted in the scene reflects the textured mesh"><span>Object insertion</span></div>
+      </div>
+      <figcaption>Querying one point per texel bakes the predictions into a mesh's textures: a standard asset for physically based rendering. A path tracer relights it, and an inserted chrome ball reflects the textured scene.</figcaption>
+    </figure>
+  </div>
+</div></section>
+
+<section id="bibtex" class="band tight"><div class="wrap">
+  <p class="eyebrow"><span class="dots"><i></i><i></i><i></i><i></i><i></i></span>Citation</p>
+  <h2>BibTeX</h2>
+  <div class="cite measure">
+    <button type="button" id="copy-bibtex" class="copy">Copy</button>
+<pre><code id="citation">@article{farinha2026pointx,
+  title   = {PointX: Multi-View Consistent Intrinsics by Querying Surface Points},
+  author  = {Farinha, Miguel and Sartor, Sam and Georgiev, Iliyan and
+             Vecchio, Giuseppe and Clark, Ronald and Fischer, Michael},
+  journal = {arXiv preprint},
+  year    = {2026}
+}</code></pre>
+  </div>
+</div></section>
+
+</main>
+
+<footer><div class="wrap">
+  <p><b>PointX</b>: Multi-View Consistent Intrinsics by Querying Surface Points</p>
+  <p>Scenes shown on this page come from <a href="https://dl3dv-10k.github.io/DL3DV-10K/" target="_blank" rel="noopener">DL3DV-10K</a>, the <a href="https://www.eth3d.net/" target="_blank" rel="noopener">ETH3D</a> benchmarks, <a href="https://github.com/apple/ml-hypersim" target="_blank" rel="noopener">Hypersim</a> and <a href="https://interiorverse.github.io/" target="_blank" rel="noopener">InteriorVerse</a>. Depth for the DL3DV scenes of the 3D panel is estimated with <a href="https://github.com/apple-aiml-research/ml-depth-pro-2" target="_blank" rel="noopener">Depth Pro 2</a>.</p>
+</div></footer>
+
+<script type="module" src="js/site.js?v=14"></script>
+<script type="module" src="js/hero.js?v=14"></script>
+<script type="module" src="js/results.js?v=14"></script>
+<script type="module" src="js/surface.js?v=14"></script>
+<script type="module" src="js/consistency.js?v=14"></script>
+<script type="module" src="js/benchmarks.js?v=14"></script>
+<script type="module" src="js/apps.js?v=14"></script>
+</body>
+</html>

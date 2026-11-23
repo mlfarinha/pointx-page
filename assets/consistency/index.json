@@ -1,0 +1,197 @@
+{
+ "ours": "ours",
+ "methods": [
+  {
+   "id": "ours",
+   "label": "PointX (Ours)"
+  },
+  {
+   "id": "rgbx",
+   "label": "RGB\u2194X"
+  },
+  {
+   "id": "vrgbx",
+   "label": "V-RGBX"
+  },
+  {
+   "id": "mvi",
+   "label": "MVInverse"
+  }
+ ],
+ "tasks": [
+  {
+   "id": "albedo",
+   "label": "Albedo"
+  },
+  {
+   "id": "irradiance",
+   "label": "Irradiance"
+  },
+  {
+   "id": "normal",
+   "label": "Normal"
+  },
+  {
+   "id": "roughness",
+   "label": "Roughness"
+  },
+  {
+   "id": "metallic",
+   "label": "Metallicity"
+  }
+ ],
+ "cases": [
+  {
+   "id": "kicker",
+   "title": "Kicker",
+   "window": "kicker_DSC_6493",
+   "views": [
+    0,
+    5
+   ],
+   "point": [
+    0.3438,
+    0.4012
+   ],
+   "grid": [
+    512,
+    341
+   ],
+   "aspect": 1.4993,
+   "seen": 0.393
+  },
+  {
+   "id": "pipes",
+   "title": "Pipes",
+   "window": "pipes_DSC_0639",
+   "views": [
+    2,
+    3
+   ],
+   "point": [
+    0.8711,
+    0.8404
+   ],
+   "grid": [
+    512,
+    341
+   ],
+   "aspect": 1.4993,
+   "seen": 0.311
+  },
+  {
+   "id": "delivery_area",
+   "title": "Delivery area",
+   "window": "delivery_area_DSC_0702",
+   "views": [
+    0,
+    6
+   ],
+   "point": [
+    0.6484,
+    0.7789
+   ],
+   "grid": [
+    512,
+    341
+   ],
+   "aspect": 1.4993,
+   "seen": 0.449
+  },
+  {
+   "id": "terrains",
+   "title": "Terrains",
+   "window": "terrains_DSC_0665",
+   "views": [
+    0,
+    1
+   ],
+   "point": [
+    0.3145,
+    0.2782
+   ],
+   "grid": [
+    512,
+    341
+   ],
+   "aspect": 1.4993,
+   "seen": 0.442
+  },
+  {
+   "id": "terrace",
+   "title": "Terrace",
+   "window": "terrace_DSC_0264",
+   "views": [
+    1,
+    7
+   ],
+   "point": [
+    0.4199,
+    0.7262
+   ],
+   "grid": [
+    512,
+    341
+   ],
+   "aspect": 1.4993,
+   "seen": 0.233
+  },
+  {
+   "id": "office",
+   "title": "Office",
+   "window": "office_DSC_0254",
+   "views": [
+    0,
+    5
+   ],
+   "point": [
+    0.5254,
+    0.3221
+   ],
+   "grid": [
+    512,
+    341
+   ],
+   "aspect": 1.4993,
+   "seen": 0.251
+  },
+  {
+   "id": "electro",
+   "title": "Electro",
+   "window": "electro_DSC_9303",
+   "views": [
+    0,
+    6
+   ],
+   "point": [
+    0.168,
+    0.243
+   ],
+   "grid": [
+    512,
+    341
+   ],
+   "aspect": 1.4993,
+   "seen": 0.545
+  },
+  {
+   "id": "relief_2",
+   "title": "Relief 2",
+   "window": "relief_2_DSC_0480",
+   "views": [
+    0,
+    3
+   ],
+   "point": [
+    0.3965,
+    0.8316
+   ],
+   "grid": [
+    512,
+    341
+   ],
+   "aspect": 1.4993,
+   "seen": 0.696
+  }
+ ]
+}

@@ -1,0 +1,630 @@
+{
+ "fps": 6.0,
+ "tile": [
+  768,
+  432
+ ],
+ "columns": 3,
+ "tiles": [
+  "input",
+  "r105_video",
+  "rgbx_video",
+  "vrgbx_video",
+  "mvi_video"
+ ],
+ "ours": "r105_video",
+ "grid": {
+  "tile": [
+   384,
+   216
+  ],
+  "columns": [
+   "rgbx_video",
+   "vrgbx_video",
+   "mvi_video",
+   "r105_video"
+  ]
+ },
+ "methods": [
+  {
+   "id": "r105_video",
+   "label": "PointX (Ours)"
+  },
+  {
+   "id": "rgbx_video",
+   "label": "RGB\u2194X"
+  },
+  {
+   "id": "vrgbx_video",
+   "label": "V-RGBX"
+  },
+  {
+   "id": "mvi_video",
+   "label": "MVInverse"
+  }
+ ],
+ "tasks": [
+  {
+   "id": "albedo",
+   "label": "Albedo"
+  },
+  {
+   "id": "irradiance",
+   "label": "Irradiance"
+  },
+  {
+   "id": "normal",
+   "label": "Normal"
+  },
+  {
+   "id": "roughness",
+   "label": "Roughness"
+  },
+  {
+   "id": "metallic",
+   "label": "Metallicity"
+  }
+ ],
+ "clips": [
+  {
+   "id": "living_room",
+   "title": "Living room",
+   "frames": 49,
+   "scores": {
+    "r105_video": {
+     "albedo": 0.0283,
+     "roughness": 0.0461,
+     "metallic": 0.0629,
+     "irradiance": 0.0338,
+     "normal": 0.6586
+    },
+    "rgbx_video": {
+     "albedo": 0.2263,
+     "roughness": 0.4323,
+     "metallic": 0.5913,
+     "irradiance": 0.4518,
+     "normal": 12.9311
+    },
+    "vrgbx_video": {
+     "albedo": 0.0701,
+     "roughness": 0.0835,
+     "metallic": 0.4441,
+     "irradiance": 0.092,
+     "normal": 2.9228
+    },
+    "mvi_video": {
+     "albedo": 0.0899,
+     "roughness": 0.1085,
+     "metallic": 0.1071,
+     "irradiance": 0.104,
+     "normal": 4.8443
+    }
+   }
+  },
+  {
+   "id": "reception",
+   "title": "Reception",
+   "frames": 49,
+   "scores": {
+    "r105_video": {
+     "albedo": 0.0189,
+     "roughness": 0.0419,
+     "metallic": 0.0862,
+     "irradiance": 0.0303,
+     "normal": 0.5639
+    },
+    "rgbx_video": {
+     "albedo": 0.1308,
+     "roughness": 0.2472,
+     "metallic": 0.4898,
+     "irradiance": 0.2355,
+     "normal": 5.0181
+    },
+    "vrgbx_video": {
+     "albedo": 0.0469,
+     "roughness": 0.1127,
+     "metallic": 0.494,
+     "irradiance": 0.0917,
+     "normal": 2.2342
+    },
+    "mvi_video": {
+     "albedo": 0.0423,
+     "roughness": 0.0873,
+     "metallic": 0.0654,
+     "irradiance": 0.1071,
+     "normal": 2.9037
+    }
+   }
+  },
+  {
+   "id": "blue_wall",
+   "title": "Blue wall",
+   "frames": 49,
+   "scores": {
+    "r105_video": {
+     "albedo": 0.0288,
+     "roughness": 0.0385,
+     "metallic": 0.0441,
+     "irradiance": 0.0372,
+     "normal": 0.3592
+    },
+    "rgbx_video": {
+     "albedo": 0.2135,
+     "roughness": 0.5151,
+     "metallic": 0.5658,
+     "irradiance": 0.3227,
+     "normal": 8.225
+    },
+    "vrgbx_video": {
+     "albedo": 0.0542,
+     "roughness": 0.0649,
+     "metallic": 0.5571,
+     "irradiance": 0.0976,
+     "normal": 1.2493
+    },
+    "mvi_video": {
+     "albedo": 0.0693,
+     "roughness": 0.105,
+     "metallic": 0.0988,
+     "irradiance": 0.1083,
+     "normal": 2.5099
+    }
+   }
+  },
+  {
+   "id": "wooden_desk",
+   "title": "Wooden desk",
+   "frames": 49,
+   "scores": {
+    "r105_video": {
+     "albedo": 0.028,
+     "roughness": 0.0693,
+     "metallic": 0.0665,
+     "irradiance": 0.0333,
+     "normal": 0.7632
+    },
+    "rgbx_video": {
+     "albedo": 0.3015,
+     "roughness": 0.4139,
+     "metallic": 0.7031,
+     "irradiance": 0.6115,
+     "normal": 32.223
+    },
+    "vrgbx_video": {
+     "albedo": 0.0624,
+     "roughness": 0.134,
+     "metallic": 0.4906,
+     "irradiance": 0.091,
+     "normal": 2.7253
+    },
+    "mvi_video": {
+     "albedo": 0.0657,
+     "roughness": 0.1314,
+     "metallic": 0.0904,
+     "irradiance": 0.1266,
+     "normal": 4.0802
+    }
+   }
+  },
+  {
+   "id": "cafeteria",
+   "title": "Cafeteria",
+   "frames": 49,
+   "scores": {
+    "r105_video": {
+     "albedo": 0.0304,
+     "roughness": 0.0337,
+     "metallic": 0.0454,
+     "irradiance": 0.0327,
+     "normal": 0.512
+    },
+    "rgbx_video": {
+     "albedo": 0.243,
+     "roughness": 0.3279,
+     "metallic": 0.342,
+     "irradiance": 0.2366,
+     "normal": 8.19
+    },
+    "vrgbx_video": {
+     "albedo": 0.0643,
+     "roughness": 0.1238,
+     "metallic": 0.3887,
+     "irradiance": 0.0828,
+     "normal": 2.4914
+    },
+    "mvi_video": {
+     "albedo": 0.0828,
+     "roughness": 0.1356,
+     "metallic": 0.0953,
+     "irradiance": 0.1061,
+     "normal": 3.3188
+    }
+   }
+  },
+  {
+   "id": "lounge",
+   "title": "Lounge",
+   "frames": 49,
+   "scores": {
+    "r105_video": {
+     "albedo": 0.0343,
+     "roughness": 0.0372,
+     "metallic": 0.0537,
+     "irradiance": 0.0334,
+     "normal": 0.6679
+    },
+    "rgbx_video": {
+     "albedo": 0.268,
+     "roughness": 0.3092,
+     "metallic": 0.2819,
+     "irradiance": 0.1508,
+     "normal": 9.3953
+    },
+    "vrgbx_video": {
+     "albedo": 0.0664,
+     "roughness": 0.0804,
+     "metallic": 0.4485,
+     "irradiance": 0.0753,
+     "normal": 2.3041
+    },
+    "mvi_video": {
+     "albedo": 0.0897,
+     "roughness": 0.1248,
+     "metallic": 0.1319,
+     "irradiance": 0.0788,
+     "normal": 2.8381
+    }
+   }
+  },
+  {
+   "id": "gym",
+   "title": "Gym",
+   "frames": 49,
+   "scores": {
+    "r105_video": {
+     "albedo": 0.0363,
+     "roughness": 0.0505,
+     "metallic": 0.0659,
+     "irradiance": 0.0271,
+     "normal": 0.4105
+    },
+    "rgbx_video": {
+     "albedo": 0.15,
+     "roughness": 0.2338,
+     "metallic": 0.3108,
+     "irradiance": 0.1589,
+     "normal": 7.2432
+    },
+    "vrgbx_video": {
+     "albedo": 0.0585,
+     "roughness": 0.0638,
+     "metallic": 0.3985,
+     "irradiance": 0.0696,
+     "normal": 2.4978
+    },
+    "mvi_video": {
+     "albedo": 0.0788,
+     "roughness": 0.0677,
+     "metallic": 0.1227,
+     "irradiance": 0.0862,
+     "normal": 2.6991
+    }
+   }
+  },
+  {
+   "id": "library",
+   "title": "Library",
+   "frames": 49,
+   "scores": {
+    "r105_video": {
+     "albedo": 0.0362,
+     "roughness": 0.0704,
+     "metallic": 0.0496,
+     "irradiance": 0.0293,
+     "normal": 1.0316
+    },
+    "rgbx_video": {
+     "albedo": 0.2507,
+     "roughness": 0.2558,
+     "metallic": 0.6226,
+     "irradiance": 0.2325,
+     "normal": 14.1453
+    },
+    "vrgbx_video": {
+     "albedo": 0.1481,
+     "roughness": 0.8941,
+     "metallic": 0.899,
+     "irradiance": 0.0975,
+     "normal": 5.0524
+    },
+    "mvi_video": {
+     "albedo": 0.1007,
+     "roughness": 0.1397,
+     "metallic": 0.13,
+     "irradiance": 0.1206,
+     "normal": 6.5463
+    }
+   }
+  },
+  {
+   "id": "shoe_store",
+   "title": "Shoe store",
+   "frames": 49,
+   "scores": {
+    "r105_video": {
+     "albedo": 0.0388,
+     "roughness": 0.0642,
+     "metallic": 0.0814,
+     "irradiance": 0.0495,
+     "normal": 0.9721
+    },
+    "rgbx_video": {
+     "albedo": 0.2801,
+     "roughness": 0.3992,
+     "metallic": 0.4246,
+     "irradiance": 0.2891,
+     "normal": 14.6643
+    },
+    "vrgbx_video": {
+     "albedo": 0.0798,
+     "roughness": 0.0888,
+     "metallic": 0.3428,
+     "irradiance": 0.1018,
+     "normal": 3.4603
+    },
+    "mvi_video": {
+     "albedo": 0.077,
+     "roughness": 0.1065,
+     "metallic": 0.1093,
+     "irradiance": 0.1293,
+     "normal": 4.2522
+    }
+   }
+  },
+  {
+   "id": "bakery",
+   "title": "Bakery",
+   "frames": 49,
+   "scores": {
+    "r105_video": {
+     "albedo": 0.0414,
+     "roughness": 0.049,
+     "metallic": 0.0398,
+     "irradiance": 0.0361,
+     "normal": 0.6807
+    },
+    "rgbx_video": {
+     "albedo": 0.2721,
+     "roughness": 0.3545,
+     "metallic": 0.3216,
+     "irradiance": 0.2857,
+     "normal": 8.4018
+    },
+    "vrgbx_video": {
+     "albedo": 0.1008,
+     "roughness": 0.1102,
+     "metallic": 0.2092,
+     "irradiance": 0.0883,
+     "normal": 3.645
+    },
+    "mvi_video": {
+     "albedo": 0.0885,
+     "roughness": 0.092,
+     "metallic": 0.0759,
+     "irradiance": 0.1046,
+     "normal": 3.6879
+    }
+   }
+  },
+  {
+   "id": "tshirt_wall",
+   "title": "T-shirt wall",
+   "frames": 49,
+   "scores": {
+    "r105_video": {
+     "albedo": 0.0402,
+     "roughness": 0.0481,
+     "metallic": 0.1025,
+     "irradiance": 0.0418,
+     "normal": 0.4724
+    },
+    "rgbx_video": {
+     "albedo": 0.2272,
+     "roughness": 0.4006,
+     "metallic": 0.7379,
+     "irradiance": 0.3925,
+     "normal": 12.7737
+    },
+    "vrgbx_video": {
+     "albedo": 0.1047,
+     "roughness": 0.0714,
+     "metallic": 0.4107,
+     "irradiance": 0.1418,
+     "normal": 3.5324
+    },
+    "mvi_video": {
+     "albedo": 0.0871,
+     "roughness": 0.1243,
+     "metallic": 0.169,
+     "irradiance": 0.1788,
+     "normal": 4.5136
+    }
+   }
+  },
+  {
+   "id": "plants",
+   "title": "Plants",
+   "frames": 49,
+   "scores": {
+    "r105_video": {
+     "albedo": 0.0402,
+     "roughness": 0.0367,
+     "metallic": 0.0737,
+     "irradiance": 0.0451,
+     "normal": 0.8371
+    },
+    "rgbx_video": {
+     "albedo": 0.1996,
+     "roughness": 0.3847,
+     "metallic": 0.4755,
+     "irradiance": 0.2208,
+     "normal": 13.1018
+    },
+    "vrgbx_video": {
+     "albedo": 0.0878,
+     "roughness": 0.0986,
+     "metallic": 0.3837,
+     "irradiance": 0.1087,
+     "normal": 4.7245
+    },
+    "mvi_video": {
+     "albedo": 0.0956,
+     "roughness": 0.0831,
+     "metallic": 0.1054,
+     "irradiance": 0.1069,
+     "normal": 6.0552
+    }
+   }
+  },
+  {
+   "id": "shop_display",
+   "title": "Shop display",
+   "frames": 49,
+   "scores": {
+    "r105_video": {
+     "albedo": 0.0429,
+     "roughness": 0.0477,
+     "metallic": 0.0612,
+     "irradiance": 0.0396,
+     "normal": 0.82
+    },
+    "rgbx_video": {
+     "albedo": 0.2226,
+     "roughness": 0.2912,
+     "metallic": 0.3904,
+     "irradiance": 0.2528,
+     "normal": 9.1525
+    },
+    "vrgbx_video": {
+     "albedo": 0.0965,
+     "roughness": 0.0518,
+     "metallic": 0.4217,
+     "irradiance": 0.107,
+     "normal": 3.1615
+    },
+    "mvi_video": {
+     "albedo": 0.0881,
+     "roughness": 0.1342,
+     "metallic": 0.113,
+     "irradiance": 0.1103,
+     "normal": 4.1183
+    }
+   }
+  },
+  {
+   "id": "bookshop",
+   "title": "Bookshop",
+   "frames": 49,
+   "scores": {
+    "r105_video": {
+     "albedo": 0.0348,
+     "roughness": 0.0538,
+     "metallic": 0.0873,
+     "irradiance": 0.0484,
+     "normal": 0.9493
+    },
+    "rgbx_video": {
+     "albedo": 0.2741,
+     "roughness": 0.2862,
+     "metallic": 0.5619,
+     "irradiance": 0.3315,
+     "normal": 14.2114
+    },
+    "vrgbx_video": {
+     "albedo": 0.0784,
+     "roughness": 0.1235,
+     "metallic": 0.4709,
+     "irradiance": 0.1011,
+     "normal": 3.7109
+    },
+    "mvi_video": {
+     "albedo": 0.1014,
+     "roughness": 0.0832,
+     "metallic": 0.1547,
+     "irradiance": 0.1277,
+     "normal": 5.0593
+    }
+   }
+  },
+  {
+   "id": "boxes",
+   "title": "Boxes",
+   "frames": 49,
+   "scores": {
+    "r105_video": {
+     "albedo": 0.0232,
+     "roughness": 0.039,
+     "metallic": 0.0439,
+     "irradiance": 0.0334,
+     "normal": 0.6445
+    },
+    "rgbx_video": {
+     "albedo": 0.1846,
+     "roughness": 0.2434,
+     "metallic": 0.632,
+     "irradiance": 0.2602,
+     "normal": 7.7656
+    },
+    "vrgbx_video": {
+     "albedo": 0.0486,
+     "roughness": 0.1245,
+     "metallic": 0.5077,
+     "irradiance": 0.1074,
+     "normal": 2.5443
+    },
+    "mvi_video": {
+     "albedo": 0.0457,
+     "roughness": 0.0779,
+     "metallic": 0.0634,
+     "irradiance": 0.1036,
+     "normal": 3.3679
+    }
+   }
+  },
+  {
+   "id": "brick_wall",
+   "title": "Brick wall",
+   "frames": 49,
+   "scores": {
+    "r105_video": {
+     "albedo": 0.0456,
+     "roughness": 0.0467,
+     "metallic": 0.0454,
+     "irradiance": 0.0408,
+     "normal": 0.6833
+    },
+    "rgbx_video": {
+     "albedo": 0.2227,
+     "roughness": 0.2521,
+     "metallic": 0.3981,
+     "irradiance": 0.2015,
+     "normal": 8.7775
+    },
+    "vrgbx_video": {
+     "albedo": 0.099,
+     "roughness": 0.0775,
+     "metallic": 0.4867,
+     "irradiance": 0.0801,
+     "normal": 2.8818
+    },
+    "mvi_video": {
+     "albedo": 0.0847,
+     "roughness": 0.1221,
+     "metallic": 0.1229,
+     "irradiance": 0.094,
+     "normal": 3.3768
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,133 @@
+{
+ "ours": "ours",
+ "methods": [
+  {
+   "id": "ours",
+   "label": "PointX (Ours)"
+  },
+  {
+   "id": "rgbx",
+   "label": "RGB\u2194X"
+  },
+  {
+   "id": "vrgbx_mv",
+   "label": "V-RGBX"
+  },
+  {
+   "id": "mvinverse_linear",
+   "label": "MVInverse"
+  },
+  {
+   "id": "gt",
+   "label": "Ground truth"
+  }
+ ],
+ "tasks": [
+  {
+   "id": "albedo",
+   "label": "Albedo"
+  },
+  {
+   "id": "irradiance",
+   "label": "Irradiance"
+  },
+  {
+   "id": "normal",
+   "label": "Normal"
+  },
+  {
+   "id": "roughness",
+   "label": "Roughness"
+  },
+  {
+   "id": "metallic",
+   "label": "Metallicity"
+  }
+ ],
+ "cases": [
+  {
+   "id": "kitchen",
+   "title": "Kitchen",
+   "tag": "Hypersim",
+   "tasks": [
+    "albedo",
+    "irradiance",
+    "normal"
+   ]
+  },
+  {
+   "id": "orange_sofa",
+   "title": "Orange sofa",
+   "tag": "InteriorVerse",
+   "tasks": [
+    "albedo",
+    "normal",
+    "roughness",
+    "metallic"
+   ]
+  },
+  {
+   "id": "bathroom",
+   "title": "Bathroom",
+   "tag": "Hypersim",
+   "tasks": [
+    "albedo",
+    "irradiance",
+    "normal"
+   ]
+  },
+  {
+   "id": "dining_table",
+   "title": "Dining table",
+   "tag": "InteriorVerse",
+   "tasks": [
+    "albedo",
+    "normal",
+    "roughness",
+    "metallic"
+   ]
+  },
+  {
+   "id": "office",
+   "title": "Office",
+   "tag": "Hypersim",
+   "tasks": [
+    "albedo",
+    "irradiance",
+    "normal"
+   ]
+  },
+  {
+   "id": "living_room",
+   "title": "Living room",
+   "tag": "InteriorVerse",
+   "tasks": [
+    "albedo",
+    "normal",
+    "roughness",
+    "metallic"
+   ]
+  },
+  {
+   "id": "lounge",
+   "title": "Lounge",
+   "tag": "Hypersim",
+   "tasks": [
+    "albedo",
+    "irradiance",
+    "normal"
+   ]
+  },
+  {
+   "id": "bedroom",
+   "title": "Bedroom",
+   "tag": "InteriorVerse",
+   "tasks": [
+    "albedo",
+    "normal",
+    "roughness",
+    "metallic"
+   ]
+  }
+ ]
+}

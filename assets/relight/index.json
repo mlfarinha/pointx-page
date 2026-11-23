@@ -1,0 +1,122 @@
+{
+ "size": [
+  1291,
+  861
+ ],
+ "scenes": [
+  {
+   "id": "pipes",
+   "title": "Pipes",
+   "views": 3,
+   "lights": [
+    {
+     "id": "warm",
+     "label": "Warm"
+    },
+    {
+     "id": "white",
+     "label": "White"
+    },
+    {
+     "id": "cool",
+     "label": "Cool"
+    }
+   ]
+  },
+  {
+   "id": "terrains",
+   "title": "Terrains",
+   "views": 3,
+   "lights": [
+    {
+     "id": "warm",
+     "label": "Warm"
+    },
+    {
+     "id": "white",
+     "label": "White"
+    },
+    {
+     "id": "cool",
+     "label": "Cool"
+    }
+   ]
+  },
+  {
+   "id": "relief",
+   "title": "Relief",
+   "views": 3,
+   "lights": [
+    {
+     "id": "warm",
+     "label": "Warm"
+    },
+    {
+     "id": "white",
+     "label": "White"
+    },
+    {
+     "id": "cool",
+     "label": "Cool"
+    }
+   ]
+  },
+  {
+   "id": "office",
+   "title": "Office",
+   "views": 3,
+   "lights": [
+    {
+     "id": "warm",
+     "label": "Warm"
+    },
+    {
+     "id": "white",
+     "label": "White"
+    },
+    {
+     "id": "cool",
+     "label": "Cool"
+    }
+   ]
+  },
+  {
+   "id": "kicker",
+   "title": "Kicker",
+   "views": 3,
+   "lights": [
+    {
+     "id": "warm",
+     "label": "Warm"
+    },
+    {
+     "id": "white",
+     "label": "White"
+    },
+    {
+     "id": "cool",
+     "label": "Cool"
+    }
+   ]
+  },
+  {
+   "id": "delivery_area",
+   "title": "Delivery area",
+   "views": 3,
+   "lights": [
+    {
+     "id": "warm",
+     "label": "Warm"
+    },
+    {
+     "id": "white",
+     "label": "White"
+    },
+    {
+     "id": "cool",
+     "label": "Cool"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,68 @@
+[
+ {
+  "id": "living_room",
+  "title": "Living room",
+  "source": "DL3DV-10K",
+  "tag": "DL3DV",
+  "tweak": [
+   0,
+   0,
+   0.85
+  ]
+ },
+ {
+  "id": "bakery",
+  "title": "Bakery",
+  "source": "DL3DV-10K",
+  "tag": "DL3DV",
+  "tweak": [
+   25,
+   -6,
+   0.85
+  ]
+ },
+ {
+  "id": "shoe_store",
+  "title": "Shoe store",
+  "source": "DL3DV-10K",
+  "tag": "DL3DV",
+  "tweak": [
+   -20,
+   -8,
+   0.7
+  ]
+ },
+ {
+  "id": "gym",
+  "title": "Gym",
+  "source": "DL3DV-10K",
+  "tag": "DL3DV",
+  "tweak": [
+   0,
+   -10,
+   0.75
+  ]
+ },
+ {
+  "id": "brick_wall",
+  "title": "Courtyard",
+  "source": "DL3DV-10K",
+  "tag": "DL3DV",
+  "tweak": [
+   0,
+   -5,
+   0.75
+  ]
+ },
+ {
+  "id": "wooden_desk",
+  "title": "Museum",
+  "source": "DL3DV-10K",
+  "tag": "DL3DV",
+  "tweak": [
+   20,
+   0,
+   0.85
+  ]
+ }
+]
