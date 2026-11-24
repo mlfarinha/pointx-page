@@ -3,8 +3,8 @@
 The project page of *PointX: Multi-View Consistent Intrinsics by Querying Surface Points*.
 A static site: no build step, no framework, no external requests (fonts and three.js are vendored) but the visitor counter's.
 
-**Unreleased.** The page carries `<meta name="robots" content="noindex,nofollow">` and its Paper / arXiv / Code
-buttons are marked "soon". See "Going public" below.
+Live at https://pointx-paper.github.io/. The Paper button opens `assets/PointX.pdf`; the arXiv / Code buttons are still marked "soon"
+and the page still carries `<meta name="robots" content="noindex,nofollow">`. See "Going public" below.
 
 ## Look at it
 
@@ -39,6 +39,7 @@ It must be served over HTTP (ES modules and `fetch` do not work from `file://`).
 | `assets/consistency/<id>/` | a pair of ETH3D views: photographs, every method's maps, and the laser scan's correspondences both ways (`ab.bin.gz`, `ba.bin.gz`) |
 | `assets/relight/<id>/photo_<n>.webp`, `<light>_<n>.webp` | view n of an ETH3D scene and the same photograph relit by each bulb (`index.json`: scenes, their lights and number of views) |
 | `assets/method`, `assets/apps` | images taken from the paper's figures |
+| `assets/PointX.pdf` | the paper, behind the Paper button |
 | `vendor/`, `fonts/` | three.js r170 (MIT), Geist (SIL OFL) |
 | `dev.html` | the bare viewer, for checks: `dev.html?scene=living_room&channel=normal&frame=60&follow=1` |
 
@@ -79,7 +80,7 @@ the tag.
 
 ## Going public
 
-1. In `index.html`: remove the `robots` meta tag; give the three `.pill.soon` links an `href`, drop `soon` and `aria-disabled`;
+1. In `index.html`: remove the `robots` meta tag; give the two `.pill.soon` links (arXiv, Code) an `href`, drop `soon` and `aria-disabled`;
    point the `og:image` at an absolute URL; update the BibTeX entry.
 2. Host the folder as it is (GitHub Pages: Settings -> Pages -> deploy from the default branch, root).
 3. Check the data terms below.
