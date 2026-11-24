@@ -1,7 +1,7 @@
 # PointX project page
 
 The project page of *PointX: Multi-View Consistent Intrinsics by Querying Surface Points*.
-A static site: no build step, no framework, no external requests (fonts and three.js are vendored).
+A static site: no build step, no framework, no external requests (fonts and three.js are vendored) but the visitor counter's.
 
 **Unreleased.** The page carries `<meta name="robots" content="noindex,nofollow">` and its Paper / arXiv / Code
 buttons are marked "soon". See "Going public" below.
@@ -70,6 +70,12 @@ Geometry of the first panel's scenes: DL3DV's COLMAP cameras and Depth Pro 2 dep
 multi-view-stereo depth. The geometry only supplies the tracks (where a point projects, and whether it is visible there); the model's
 own input geometry is VGGT-Omega's, as trained. (`web/scenes.py` also reads ETH3D SLAM sequences, with the benchmark's depth sensor and
 motion-capture poses; they are not shown: those scans are sparse.)
+
+## Visitor counter
+
+The last line of `index.html` is a [GoatCounter](https://www.goatcounter.com) tag: visits and their countries, no cookies, nothing shown on
+the page; visits from `localhost` are not counted. The numbers are at https://mlfarinha.goatcounter.com. The anonymous copy never carries
+the tag.
 
 ## Going public
 

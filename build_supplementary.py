@@ -3,7 +3,7 @@
 -> DIR/pointx_supplementary/index.html (+ assets/), which opens by double-click, and DIR/pointx_supplementary.zip.
 With --single: ONE file, DIR/pointx_supplementary.html (+ DIR/pointx_supplementary_single.zip), every asset inside it.
 
-Anonymous: no authors, affiliations, paper / arXiv / code buttons, BibTeX, links out, or social-media tags, and no footer naming the
+Anonymous: no authors, affiliations, paper / arXiv / code buttons, BibTeX, links out, visitor counter or social-media tags, and no footer naming the
 data's sources or Depth Pro 2 (the first panel says "estimated depth"); the build FAILS if a word of LEAKS is found in any text it
 ships.
 
@@ -135,6 +135,7 @@ html = once(html, r'<p class="authors">.*?(?=<p class="tldr">)', '<p class="affi
 html = once(html, r'<section id="bibtex".*?</section>\n', "")
 html = once(html, r" Every map of every method plays side by side; switch to the slider to compare PointX with one baseline under a divider\.", " Every map of every method plays side by side.")
 html = once(html, r"  <p>Scenes shown on this page come from.*?</p>\n", "")                         # the footer's sources (and the page's only links out)
+html = once(html, r"<!-- Visitor counter.*?-->\n[^\n]*data-goatcounter[^\n]*\n", "")                # no counter, switched on or not: a reviewer's visit is not recorded
 
 css = read("css/site.css")
 for font in ("Geist-Variable.woff2", "GeistMono-Variable.woff2"):
