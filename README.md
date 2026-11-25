@@ -3,8 +3,9 @@
 The project page of *PointX: Multi-View Consistent Intrinsics by Querying Surface Points*.
 A static site: no build step, no framework, no external requests (fonts and three.js are vendored) but the visitor counter's.
 
-Live at https://pointx-paper.github.io/. The Paper button opens `assets/PointX.pdf`; the arXiv / Code buttons are still marked "soon"
-and the page still carries `<meta name="robots" content="noindex,nofollow">`. See "Going public" below.
+Live at https://pointx-paper.github.io/. The paper is arXiv:2611.33157 (https://arxiv.org/abs/2611.33157): the arXiv button and the
+BibTeX entry carry it, the Paper button opens `assets/PointX.pdf`. The Code button is still marked "soon" and the page still carries
+`<meta name="robots" content="noindex,nofollow">`. See "Going public" below.
 
 ## Look at it
 
@@ -80,8 +81,8 @@ the tag.
 
 ## Going public
 
-1. In `index.html`: remove the `robots` meta tag; give the two `.pill.soon` links (arXiv, Code) an `href`, drop `soon` and `aria-disabled`;
-   point the `og:image` at an absolute URL; update the BibTeX entry.
+1. In `index.html`: remove the `robots` meta tag; give the `.pill.soon` link (Code) an `href`, drop `soon` and `aria-disabled`;
+   point the `og:image` at an absolute URL. Done already: the arXiv button and the BibTeX entry (arXiv:2611.33157).
 2. Host the folder as it is (GitHub Pages: Settings -> Pages -> deploy from the default branch, root).
 3. Check the data terms below.
 
