@@ -126,7 +126,7 @@ ship("assets/favicon.svg")
 
 # ---------------------------------------------------------------------------------------------- the page
 html = read("index.html")
-html = once(html, r"<!-- Unreleased.*?<title>", "<title>")                                       # robots and social-media tags
+html = once(html, r'<meta name="description".*?<title>', "<title>")                              # description, social-media tags, the page's address
 html = once(html, r'<link rel="preload"[^>]*>\n', "")
 html = once(html, r"<!-- \?v=N.*?-->\n", "")
 html = once(html, r'<a href="#bibtex">BibTeX</a>', "")

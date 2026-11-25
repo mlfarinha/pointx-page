@@ -4,8 +4,9 @@ The project page of *PointX: Multi-View Consistent Intrinsics by Querying Surfac
 A static site: no build step, no framework, no external requests (fonts and three.js are vendored) but the visitor counter's.
 
 Live at https://pointx-paper.github.io/. The paper is arXiv:2611.33157 (https://arxiv.org/abs/2611.33157): the arXiv button and the
-BibTeX entry carry it, the Paper button opens `assets/PointX.pdf`. The Code button is still marked "soon" and the page still carries
-`<meta name="robots" content="noindex,nofollow">`. See "Going public" below.
+BibTeX entry carry it, the Paper button opens `assets/PointX.pdf`. The Code button is still marked "soon". The page is open to search
+engines: no `robots` tag, and `<link rel="canonical">` names https://pointx-paper.github.io/ as the address to list (the same files
+are also served at https://mlfarinha.github.io/pointx-page/). See "Going public" below.
 
 ## Look at it
 
@@ -81,8 +82,8 @@ the tag.
 
 ## Going public
 
-1. In `index.html`: remove the `robots` meta tag; give the `.pill.soon` link (Code) an `href`, drop `soon` and `aria-disabled`;
-   point the `og:image` at an absolute URL. Done already: the arXiv button and the BibTeX entry (arXiv:2611.33157).
+1. In `index.html`: give the `.pill.soon` link (Code) an `href`, drop `soon` and `aria-disabled`; point the `og:image` at an absolute
+   URL. Done already: the arXiv button and the BibTeX entry (arXiv:2611.33157), the `robots` tag removed, the canonical address.
 2. Host the folder as it is (GitHub Pages: Settings -> Pages -> deploy from the default branch, root).
 3. Check the data terms below.
 
